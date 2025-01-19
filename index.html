@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Classroom</title>
+    <link rel="icon" type="image/png" href="/images/gc.png">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+            font-family: Arial, sans-serif;
+        }
+
+        .glow-button {
+            position: absolute;
+            top: 50%;
+            padding: 15px 30px;
+            font-size: 20px;
+            color: #fff;
+            background: #000;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            animation: rgb-glow 4s infinite;
+        }
+
+        .glow-button#cloaker-button {
+            left: 43%;
+            transform: translate(-50%, -50%);
+        }
+
+        .glow-button#games-button {
+            left: 57%;
+            transform: translate(-50%, -50%);
+        }
+
+        .glow-button#new-button-1 {
+            top: 60%;
+            left: 43%;
+            transform: translate(-50%, -50%);
+        }
+
+        .glow-button#new-button-2 {
+            top: 60%;
+            left: 57%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .glow-button#new-button-3 {
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes rgb-glow {
+            0% {
+                box-shadow: 0 0 20px 2px rgba(255, 0, 0, 0.8), 0 0 30px 2px rgba(255, 0, 0, 0.6), 0 0 40px 2px rgba(255, 0, 0, 0.4);
+            }
+            20% {
+                box-shadow: 0 0 20px 2px rgba(255, 165, 0, 0.8), 0 0 30px 2px rgba(255, 165, 0, 0.6), 0 0 40px 2px rgba(255, 165, 0, 0.4);
+            }
+            40% {
+                box-shadow: 0 0 20px 2px rgba(255, 255, 0, 0.8), 0 0 30px 2px rgba(255, 255, 0, 0.6), 0 0 40px 2px rgba(255, 255, 0, 0.4);
+            }
+            60% {
+                box-shadow: 0 0 20px 2px rgba(0, 128, 0, 0.8), 0 0 30px 2px rgba(0, 128, 0, 0.6), 0 0 40px 2px rgba(0, 128, 0, 0.4);
+            }
+            80% {
+                box-shadow: 0 0 20px 2px rgba(0, 0, 255, 0.8), 0 0 30px 2px rgba(0, 0, 255, 0.6), 0 0 40px 2px rgba(0, 0, 255, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 20px 2px rgba(75, 0, 130, 0.8), 0 0 30px 2px rgba(75, 0, 130, 0.6), 0 0 40px 2px rgba(75, 0, 130, 0.4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="cloaker-button" class="glow-button">About:blank</button>
+    <button id="games-button" class="glow-button">Go to Games</button>
+    <button id="new-button-1" class="glow-button">The Pizza Edition</button>
+    <button id="new-button-2" class="glow-button">Frogies Arcade</button>
+    <button id="new-button-3" class="glow-button">Pizza Edition Site</button>
+    <script>
+        // Cloaker function
+        document.getElementById('cloaker-button').addEventListener('click', function() {
+            var url = window.location.href;
+            var win;
+
+            if (win) {
+                win.focus();
+            } else {
+                win = window.open();
+                win.document.body.style.margin = '0';
+                var originalTitle = document.title;
+                var faviconElement = document.querySelector('link[rel="icon"]');
+                var faviconURL = faviconElement ? faviconElement.href : '';
+                win.document.title = originalTitle;
+                if (faviconURL) {
+                    var favicon = win.document.createElement('link');
+                    favicon.rel = 'icon';
+                    favicon.href = faviconURL;
+                    win.document.head.appendChild(favicon);
+                }
+                var iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.style.overflow = 'hidden';
+                iframe.src = url;
+                win.document.body.appendChild(iframe);
+                window.location.replace("https://ixl.com");
+
+                var interval = setInterval(function() {
+                    if (win.closed) {
+                        clearInterval(interval);
+                        win = undefined;
+                    }
+                }, 500);
+            }
+            this.textContent = "About:blank";
+        });
+
+        // Redirect to games
+        document.getElementById('games-button').addEventListener('click', function() {
+            window.location.href = "ind4x.html";
+        });
+
+        // Redirect to new URL
+        document.getElementById('new-button-2').addEventListener('click', function() {
+            window.location.href = "https://frogiesarca.de";
+        });
+
+        // Redirect to new URL
+        document.getElementById('new-button-3').addEventListener('click', function() {
+            window.location.href = "https://hi.pizzaedition.site";
+        });
+    </script>
+</body>
+</html>
